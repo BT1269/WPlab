@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Tour Form</title>
+    <link rel="stylesheet" href="./mystyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        nav {
+             background-color: #cd6e6e;
+            padding: 10px 20px;
+             display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px; 
+            margin-right: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            flex: 1;
+            padding: 10px;
+            background-color: #cd6e6e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b85858;
+        }
+        button[type="reset"] {
+            background-color: #777;
+        }
+        button[type="reset"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="https://imgs.search.brave.com/YuJFnT4LIphqCZlAvhobTi2gXV8bdtartsSpTnsV6h4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzhiL2Fj/LzhiLzhiYWM4YjU2/N2FhNDYzZWVjNTQy/MDViYmY1ZWEyNTU0/LmpwZw" alt="Mumbai Heritage Tourism Logo">
+            <a href="./WPLab Assignment 3.html">Home</a>
+            <a href="./Heritage.html">Heritage Sites</a>
+            <a href="./Tour Bookings.html">Tour Bookings</a>
+            <a href="./Gallery.html">Gallery</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Heritage Tour Registration</h1>
+        <form action="submit_form.html" method="post">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="tour-date">Preferred Tour Date:</label>
+            <input type="date" id="tour-date" name="tour-date" required>
+
+            <label for="heritage-sites">Select Heritage Sites to Visit:</label>
+            <select id="heritage-sites" name="heritage-sites" multiple required>
+                <option value="gateway_of_india">Gateway of India</option>
+                <option value="cst">Chhatrapati Shivaji Maharaj Terminus</option>
+                <option value="elephanta_caves">Elephanta Caves</option>
+                <option value="haji_ali_dargah">Haji Ali Dargah</option>
+                <option value="marine_drive">Marine Drive</option>
+                <option value="kanheri_caves">Kanheri Caves</option>
+            </select>
+
+            <label for="group-size">Number of People in Group:</label>
+            <input type="number" id="group-size" name="group-size" min="1" placeholder="Enter group size" required>
+
+            <label for="special-requests">Special Requests or Requirements:</label>
+            <textarea id="special-requests" name="special-requests" placeholder="Let us know about any special requests or requirements"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

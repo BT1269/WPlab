@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Sites of Mumbai</title>
+    <link rel="stylesheet" href="./mystyle.css">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        nav {
+             background-color: #cd6e6e;
+            padding: 10px 20px;
+             display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 40px; 
+            margin-right: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #444;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .grid a {
+            display: block;
+            text-decoration: none;
+        }
+        .grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .grid img:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .grid img:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .grid img:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .grid img:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .grid img:nth-child(5) {
+            animation-delay: 1s;
+        }
+        .grid img:nth-child(6) {
+            animation-delay: 1.2s;
+        }
+        .description {
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="https://imgs.search.brave.com/YuJFnT4LIphqCZlAvhobTi2gXV8bdtartsSpTnsV6h4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzhiL2Fj/LzhiLzhiYWM4YjU2/N2FhNDYzZWVjNTQy/MDViYmY1ZWEyNTU0/LmpwZw" alt="Mumbai Heritage Tourism Logo">
+            <a href="./WPLab Assignment 3.html">Home</a>
+            <a href="./Heritage.html">Heritage Sites</a>
+            <a href="./Tour Bookings.html">Tour Bookings</a>
+            <a href="./Gallery.html">Gallery</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Heritage Sites of Mumbai</h1>
+        <p>Mumbai, the city of dreams, is also a treasure trove of heritage. Here are six remarkable heritage sites in Mumbai:</p>
+
+        <h2 id="heritage-sites">Gallery:</h2>
+        <div class="grid">
+            <a href="./gateway_of_india.html">
+                <img src="https://imgs.search.brave.com/dxPd9s1nKnRAvJzaPSzQaIbcjTSqQ-hgSEYMSKf574A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzAwLzU1Lzk0/LzM2MF9GXzIwMDU1/OTQ3M193RURaZ3hT/RFBQalFmZ1gzc1Fx/WGNqejRwaDFhNzlZ/dC5qcGc" alt="Gateway of India">
+                <div class="image-title">Gateway of India</div>
+                <div class="description">Iconic arch monument overlooking the Arabian Sea, built in 1924.</div>
+            </a>
+            <a href="./chhatrapati_shivaji_maharaj_terminus.html">
+                <img src="https://imgs.search.brave.com/q9c2hLjN0zSmoRkhZQICeUUP36TPkcMSNdQxxlNwwKk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM1/OTgzMjU1OC9waG90/by9jc3Qtc3RhdGlv/bi1tdW1iYWkuanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPXA4/dVVpS2UtWDBNZDM0/a1JpWVlFYzJjUXdY/N2lCUWFhbW81cHZ3/SmZiNDA9" alt="Chhatrapati Shivaji Maharaj Terminus">
+                <div class="image-title">Chhatrapati Shivaji Maharaj Terminus</div>
+                <div class="description">UNESCO World Heritage Site showcasing Victorian Gothic architecture.</div>
+            </a>
+            <a href="./elephanta_caves.html">
+                <img src="elephanta_caves.jpg" alt="Elephanta Caves">
+                <div class="image-title">Elephanta Caves</div>
+                <div class="description">Ancient rock-cut caves with intricate sculptures dedicated to Lord Shiva.</div>
+            </a>
+            <a href="./haji_ali_dargah.html">
+                <img src="haji_ali_dargah.jpg" alt="Haji Ali Dargah">
+                <div class="image-title">Haji Ali Dargah</div>
+                <div class="description">A mosque and tomb located on a picturesque islet.</div>
+            </a>
+            <a href="./marine_drive.html">
+                <img src="marine_drive.jpg" alt="Marine Drive">
+                <div class="image-title">Marine Drive</div>
+                <div class="description">Known as the "Queen's Necklace," a scenic seaside boulevard.</div>
+            </a>
+            <a href="./kanheri_caves.html">
+                <img src="kanheri_caves.jpg" alt="Kanheri Caves">
+                <div class="image-title">Kanheri Caves</div>
+                <div class="description">Buddhist caves nestled in the greenery of Sanjay Gandhi National Park.</div>
+            </a>
+        </div>
+        
+    </div>
+</body>
+</html>
