@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIT Warangal - Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #003366;
+            color: white;
+        }
+        header {
+            background-color: white;
+            color: black;
+            padding: 10px 0;
+        }
+        .logo img {
+            height: 80px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            position: relative;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+        }
+        nav ul li a::after {
+            content: " \25BE";
+            font-size: 12px;
+        }
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 150px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            z-index: 1000;
+        }
+        .dropdown li {
+            display: block;
+            margin: 0;
+        }
+        .dropdown li a {
+            color: black;
+            padding: 10px;
+            display: block;
+        }
+        .dropdown li a:hover {
+            background: #ddd;
+        }
+        .carousel {
+            position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+        }
+        .carousel2 {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .slides img {
+            width: 100%; 
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+        }
+        .content {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            background: #f8f8f8;
+            color: black;
+        }
+        .welcome, .announcements {
+            width: 45%;
+        }
+        footer {
+            background-color: white;
+            color: black;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .scroll-text {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .scroll-text p {
+            display: inline-block;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://nitw.ac.in/images/NITW_logo_telugu3.png" alt="NITW Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a>
+                    <ul class="dropdown">
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Vision & Mission</a></li>
+                        <li><a href="#">Administration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Departments</a>
+                    <ul class="dropdown">
+                        <li><a href="#">CSE</a></li>
+                        <li><a href="#">ECE</a></li>
+                        <li><a href="#">Mechanical</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Admissions</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Postgraduate</a></li>
+                        <li><a href="#">PhD</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contact</a></li>
+                <li><div><img src="https://amritmahotsav.nic.in/writereaddata/portal/images/g-20-logo.png" alt="NITW Logo"height="50" width="100"></div></li>
+                <li><div><img src="https://amritmahotsav.nic.in/writereaddata/portal/images/logo-black.png" alt="NITW Logo"height="50" width="100"></div></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="scroll-text">
+        <p>Registrations are open for internships in NITW. Registrations are open for internships in NITW. Registrations are open for internships in NITW. Registrations are open for internships in NITW.</p>
+    </div>
+    <section class="carousel">
+        <div class="slides">
+            <img src="https://imgs.search.brave.com/rWpJYaNXA6wS2y3PvFR48XvVFxFn8pF3px_VRSeHAZw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuamRtYWdpY2Jv/eC5jb20vY29tcC93/YXJhbmdhbC81Mi85/OTk5cG11bGh5ZHN0/ZDgwNTUyL2NhdGFs/b2d1ZS9uYXRpb25h/bC1pbnN0aXR1dGUt/b2YtdGVjaG5vbG9n/eS13YXJhbmdhbC1u/aXQtd2FyYW5nYWwt/Y29sbGVnZXMta3l4/eXJqYy0yNTAuanBn" class="slide" alt="Campus View 1">
+            <img src="https://imgs.search.brave.com/BcDogtAHk6Z8DVOv5ilVANBaIVBY2mGvbEsq7lZdfN4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9kYXNh/Y2l3Zy5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjMvMTAv/TklULVdhcmFuZ2Fs/LTEtMTA2OHg4MDAu/anBlZw" class="slide" alt="Campus View 2">
+            <img src="https://imgs.search.brave.com/69eM1QMb3BIGF4eP_3NEm1to_b6gV4j50h73GBULn2Y/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5jb2xsZWdlZGVr/aG8uY29tL21lZGlh/L2ltZy9uZXdzL0pF/RV9NYWluX05JVF9U/cmljaHlfRXhwZWN0/ZWRfQ3V0b2ZmX1Bl/cmNlbnRpbGVfMjAy/NS5qcGVnP3RyPXct/MjM2LGgtMTI0" class="slide" alt="Campus View 3">
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="welcome">
+            <h2>News & Events</h2>
+            <h3>Spring Spree</h3>
+            <p>SpringSpree is the annual cultural festival of the National Institute of Technology Warangal (NITW). 
+                It started in 1978 as a refreshing break from classes and has grown into one of the nation's most renowned cultural festivals. 
+                Over the years, SpringSpree has attracted participants from all corners of the country and has hosted famous artists, enriching the festival with their esteemed presence and performances1</p>
+                <br><br>
+            <h3>Technozion</h3>
+            <p>Technozion is the annual technical festival of the National Institute of Technology Warangal (NITW). Established in 2006, Technozion has grown to become one of the largest and most anticipated technical fests in India, attracting participants from various institutions across the country.
+
+                The festival serves as a platform for students to showcase their technical skills, innovations, and creativity.
+                 It features a wide range of events, including competitions, workshops, guest lectures, and exhibitions. 
+                 These events cover various domains of engineering and technology, providing participants with opportunities to learn, collaborate, and compete.</p>
+        </div>
+       
+    </section>
+        <h3>Campus Life</h3>
+        <div>
+            <img src="https://imgs.search.brave.com/vcclPQSx6gFXo8w7Yv4wBhUFOyIEFkxqea37gWRpojM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dW5pdmVyc2l0eWth/cnQuY29tLy9Db250/ZW50L3VwbG9hZC9h/ZG1pbi9jeXVnbDJz/Yi5yZWouanBn" class="slide" alt="Campus View 1" height="300" width="300">
+            <img src="https://imgs.search.brave.com/xAMY1d5OGDT3phKBeI8V7NT6vKn1_XgkZV3GmTMjW3w/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dW5pdmVyc2l0eWth/cnQuY29tLy9Db250/ZW50L3VwbG9hZC9h/ZG1pbi9jamdwdWxm/dS56YnQuanBn" class="slide" alt="Campus View 2"height="300" width="300">
+            <img src="https://imgs.search.brave.com/BDGfbwCYMm52dQKKzgqP0dJ8NpPUDtj57VMThN6CIbI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuY29sbGVnZWR1/bmlhLmNvbS9wdWJs/aWMvYXNzZXQvaW1n/L2V4YW0vbmV3cy9u/ZXdzMy5qcGc_aD0x/NDQmdz0yNzcmbW9k/ZT1zdHJldGNo" class="slide" alt="Campus View 3"height="300" width="300">
+        </div>
+    <footer>
+        <p>&copy; 2025 NIT Warangal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function slideShow(selector) {
+            let index = 0;
+            function showSlides() {
+                const slides = document.querySelectorAll(selector + " .slide");
+                slides.forEach((slide, i) => {
+                    slide.style.display = i === index ? "block" : "none";
+                });
+                index = (index + 1) % slides.length;
+                setTimeout(showSlides, 3000);
+            }
+            showSlides();
+        }
+    
+        slideShow(".carousel");
+    </script>
+</body>
+</html>
