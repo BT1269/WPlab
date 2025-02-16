@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Tourism</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: url('https://imgs.search.brave.com/gOfzRFABq709xnQ5lXsAKjg9I5D9AjYTYIJfsU2XGew/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI1/NDkzNDI1My9waG90/by9jZW50cmFsLW5l/dy1kZWxoaS5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9dWxN/SGtnMGRoSzd6Ni1L/M3QyTXNhNm9TZS1W/bUhrVXRkcWdUVUZF/Ui1qUT0') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            scroll-behavior: smooth;
+            
+        }
+        nav {
+            background-color: #83b7f6;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 1.1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            font-family: 'Lora', serif;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+        }
+        .cta-button {
+            background: #83b7f6;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            transition: transform 0.3s ease-out;
+        }
+        .cta-button:active::after {
+            transform: translate(-50%, -50%) scale(3);
+        }
+        .blog-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px;
+        }
+        .blog-card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .blog-card:hover {
+            transform: scale(1.05);
+        }
+        .blog-card1 { background-image: url('https://imgs.search.brave.com/muegS_318_3OK6eciXCUSc9LipGCc_Dsq0H4Xx8_8P4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9h/L2FiL1NoaXNoX0d1/bWJhZCxfTG9kaGlf/R2FyZGVucyxfRGVs/aGkuSlBH'); }
+        .blog-card2 { background-image: url('https://imgs.search.brave.com/GMAfxra7NH2R_1fdmKzfcbSuHd_a_XUX8YNu97ETUo4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTQ1/MTEzMzMwL3Bob3Rv/L3ZpZXctb2Ytc3Ry/ZWV0LWZvb2QtaW4t/ZGVsaGkuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPTE4UGJE/eDFRM1JlbWVrbUtI/Sk5XeEpac05nMld0/N1dJT2pTZUE1NGRS/Sk09'); }
+        .blog-card3 { background-image: url('https://imgs.search.brave.com/8PAxpOjCVmivViEifxOawG6K93EezW0ORRzTCfcu6gU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDE0ODE4/MzE3LndlYnA'); }
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+        .category {
+            background: #83b7f6;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .category:hover {
+            background: #83b7f6;
+            transform: scale(1.1);
+        }
+        .subscribe {
+            text-align: center;
+            padding: 50px;
+        }
+        .subscribe input {
+            padding: 10px;
+            margin: 5px;
+        }
+        .subscribe button {
+            padding: 10px 20px;
+            background: #83b7f6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+        .subscribe button:hover {
+            box-shadow: 0 0 10px #83b7f6;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #83b7f6;
+            color: white;
+        }
+        p{
+            color: #f4e9e9;
+        }
+        h2{
+            color: #83b7f6;
+        }
+        .social-icons i {
+            font-size: 2em;
+            margin: 10px;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+        }
+        .social-icons i:hover {
+            animation: bounce 0.5s ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="https://imgs.search.brave.com/Gy6s1rt1JbL1F91taXsfSbzFrmN3Hb2Qq9apS8Zf3so/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvcHJldmll/dy0xeC8wMS8yMC9k/ZWxoaS1pbmRpYS1j/aXR5LXNreWxpbmUt/c2lsaG91ZXR0ZS1o/YW5kLWRyYXduLXZl/Y3Rvci00NzQyMDEy/MC5qcGc" alt="Delhi Tourism Logo" height="100" width="200">
+            <a href="#">Home</a>
+            <a href="#">Blog</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Explore Delhi's Rich Heritage</h1>
+        <button class="cta-button">Discover Now</button>
+    </section>
+    <section class="blog-section">
+        <div class="blog-card blog-card1"><p>Check out some famous tourist attractions in Delhi</p></div>
+        <div class="blog-card blog-card2"><p>Make sure to try Delhi's legendary street food</p></div>
+        <div class="blog-card blog-card3"><p>Delve into Delhi's rich and diverse history</p></div>
+    </section>
+    <section class="categories">
+        <div class="category">History</div>
+        <div class="category">Culture</div>
+        <div class="category">Food</div>
+    </section>
+    <section class="subscribe">
+        <h2>Subscribe to Our Newsletter</h2>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <button>Subscribe</button>
+    </section>
+    <footer>
+        <div class="social-icons">
+            <i class="fab fa-facebook"><img src="https://imgs.search.brave.com/6SKwdhOsY-K2XV-Wdui5fvvdN153woKTv_iFEAMVc2k/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9mYWNlYm9v/ay1pY29uLTUxMng1/MTItc2ViNTQyanUu/cG5n" width="50" height="50"></i>
+            <i class="fab fa-twitter"><img src="https://imgs.search.brave.com/qaYJpvK6bckDRIOZRv2PKE3h7bw9DZ4pOwADJdbfJSg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4y/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvbWV0cm8tdWkt/ZG9jay8xMjgvVHdp/dHRlcl9hbHRfMi5w/bmc" width="50" height="50"></i>
+            <i class="fab fa-instagram"><img src="https://imgs.search.brave.com/E-zhH0wUZET-_4Dh6TJa4HZbywnK5qaAWydvcICk0hk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMtMDAuaWNvbmR1/Y2suY29tL2Fzc2V0/cy4wMC9pbnN0YWdy/YW0taWNvbi0yNTZ4/MjU2LWVzNmF1ZHc1/LnBuZw" width="50" height="50"></i>
+        </div>
+    </footer>
+</body>
+</html>
