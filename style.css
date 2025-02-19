@@ -1,0 +1,74 @@
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('https://th.bing.com/th/id/OIP.070bgSn65uB0pBmEewfxRwHaDt?w=343&h=175&c=7&r=0&o=5&pid=1.7');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    color: #f1e7e7;
+}
+.container {
+    text-align: center;
+    background-color: rgb(121, 7, 7);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #f5eeee;
+    width: 500px;
+    height: 60%;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 80%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #e4e7e4;
+    color: #3d3f3d;
+
+}
+
+#movieList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#movieList li {
+    padding: 5px;
+    cursor: pointer;
+    background-color: #2c8a2c;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+#movieList li:hover {
+    background-color: #d3f3d3;
+}
+
+#clearListBtn {
+    background-color: #0c0202;
+    color: rgb(241, 239, 239);
+}
+
+#clearListBtn:hover {
+    background-color: #f1eeee;
+    color: rgb(15, 1, 1);
+}
