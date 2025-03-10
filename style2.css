@@ -9,6 +9,13 @@ body {
     color: #333;
 }
 
+marquee {
+      background-color: red;
+      color: blue;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 10px;
+    }
 header {
     background-color: #DD9818;
     color: #1776E4;
