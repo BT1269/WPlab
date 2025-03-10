@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Catalog</title>
-    <link rel="stylesheet" href="style2.css">
-    <style>
-        .scrolling-banner {
-            width: 100%;
-            background-color: #ffeb3b;
-            color: #000;
-            overflow: hidden;
-            white-space: nowrap;
-            box-sizing: border-box;
-        }
-        .scrolling-banner p {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scroll-left 10s linear infinite;
-            font-weight: bold;
-            font-size: 1.2em;
-            margin: 0;
-        }
-        @keyframes scroll-left {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog</title>
+  <link rel="stylesheet" href="style2.css">
+  <style>
+    marquee {
+      background-color: #ffeb3b;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.2em;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="scrolling-banner">
-        <p>All electronics are at 60% off!</p>
-    </div>
-    <header>
-        <img id="logo" src="https://th.bing.com/th/id/OIP.9UqfoFXUzuxVO1Hs56PQogHaHa?w=206&h=206&c=7&r=0&o=5&pid=1.7" width="100px" height="100px">
-        <h1>Welcome To KlipBuy</h1>
-        <nav>
-            <a href="WPLab Assignment 8.html">Home</a>
-            <a href="https://www.flipkart.com/helpcentre">Contact Us</a>
-            <a href="#Support">Support Us</a>  
-        </nav>
-    </header>
-    <section class="products">
-        <h2>Available Products</h2>
-        <div id="product-list"></div>
-    </section>
-    <section class="cart">
-        <h2>Shopping Cart</h2>
-        <div id="cart-items"></div>
-        <p>Total: $<span id="total-price">0</span></p>
-    </section>
-    <script src="script1.js"></script>
+  <marquee behavior="scroll" direction="left" scrollamount="5">All electronics are at 60% off!</marquee>
+  <header>
+    <img id="logo" src="https://th.bing.com/th/id/OIP.9UqfoFXUzuxVO1Hs56PQogHaHa?w=206&h=206&c=7&r=0&o=5&pid=1.7" width="100px" height="100px">
+    <h1>Welcome To KlipBuy</h1>
+    <nav>
+      <a href="WPLab Assignment 8.html">Home</a>
+      <a href="https://www.flipkart.com/helpcentre">Contact Us</a>
+      <a href="#Support">Support Us</a>  
+    </nav>
+  </header>
+  <section class="products">
+    <h2>Available Products</h2>
+    <div id="product-list"></div>
+  </section>
+  <section class="cart">
+    <h2>Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <p>Total: $<span id="total-price">0</span></p>
+  </section>
+  <script src="script1.js"></script>
 </body>
 </html>
