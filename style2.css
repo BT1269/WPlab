@@ -1,48 +1,53 @@
 body, h1, h2, p {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(250, 240, 198);
+    background-color: #FAF0C6;
+    color: #333;
 }
 
 header {
-    background-color: #dd9818;
-    color: rgb(23, 118, 228);
+    background-color: #DD9818;
+    color: #1776E4;
     text-align: center;
     padding: 20px;
 }
 
 #logo {
     transform: rotate(180deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
     display: block;
     margin: 0 auto;
     border-radius: 10px;
 }
 
+#logo:hover {
+    transform: rotate(0deg);
+}
+
 nav {
-    background-color: rgb(23, 118, 228);
-    padding: 10px 20px;
+    background-color: #1776E4;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 nav a {
-    color: #dd9818;
+    color: #DD9818;
     text-decoration: none;
-    margin-right: 15px;
-    font-size: 1.1em;
+    margin: 0 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
+    color: #FFF;
     text-decoration: underline;
-}
-
-h1 {
-    font-size: 2.5em;
 }
 
 .products {
@@ -50,19 +55,22 @@ h1 {
     padding: 20px;
     width: 90%;
     max-width: 1200px;
-    background-color: rgb(83, 157, 241);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #539DF1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 h2 {
     margin-bottom: 15px;
-    font-size: 1.5em;
+    font-size: 1.8em;
+    text-align: center;
+    color: #FFF;
 }
 
 #product-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .product-item {
@@ -70,9 +78,15 @@ h2 {
     margin-bottom: 20px;
     text-align: center;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #FFF;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .product-item img {
@@ -82,29 +96,31 @@ h2 {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     margin-top: 10px;
     background-color: #4CAF50;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .cart {
-    margin: 20px auto;
+    margin: 30px auto;
     padding: 30px;
     width: 90%;
     max-width: 1200px;
-    background-color: #f5dca5;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border: 2px solid #dd9818;
+    background-color: #F5DCA5;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: 3px solid #DD9818;
 }
 
 #cart-items {
@@ -117,10 +133,15 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    padding: 10px;
-    background-color: #fff;
+    padding: 15px;
+    background-color: #FFF;
     border-radius: 8px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.cart-item:hover {
+    transform: scale(1.02);
 }
 
 .cart-item span {
@@ -129,22 +150,24 @@ button:hover {
 }
 
 .cart-item button {
-    background-color: #f44336;
+    background-color: #F44336;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 0.9em;
     transition: background-color 0.3s ease;
 }
 
 .cart-item button:hover {
-    background-color: #d32f2f;
+    background-color: #D32F2F;
 }
 
 #total-price {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #333;
     margin-top: 20px;
+    text-align: center;
 }
