@@ -9,16 +9,13 @@ class Product {
 
 class Cart {
   constructor() {
-    // Using an object to store items by product id, with quantity
-    this.items = {}; 
+    this.items = {};
   }
 
   addItem(product) {
     if (this.items[product.id]) {
-      // If product already exists, increase its quantity
       this.items[product.id].quantity += 1;
     } else {
-      // Else, add the product with quantity 1
       this.items[product.id] = { product: product, quantity: 1 };
     }
     this.updateCart();
@@ -26,7 +23,6 @@ class Cart {
 
   removeItem(productId) {
     if (this.items[productId]) {
-      // If quantity is more than one, decrease it; otherwise, remove it
       if (this.items[productId].quantity > 1) {
         this.items[productId].quantity -= 1;
       } else {
@@ -49,7 +45,6 @@ class Cart {
     const totalPriceElement = document.getElementById("total-price");
     cartItemsContainer.innerHTML = '';
 
-    // Create a header row to display columns: Item, Price, Quantity, Actions
     const headerRow = document.createElement("div");
     headerRow.style.display = "flex";
     headerRow.style.justifyContent = "space-between";
@@ -63,7 +58,6 @@ class Cart {
     `;
     cartItemsContainer.appendChild(headerRow);
 
-    // Loop over each item and create a row
     Object.values(this.items).forEach(itemObj => {
       const cartItem = document.createElement("div");
       cartItem.classList.add("cart-item");
@@ -89,7 +83,6 @@ class Cart {
 
     totalPriceElement.innerText = this.getTotalPrice().toFixed(2);
 
-    // Bind event listeners for the Add buttons
     const addButtons = cartItemsContainer.querySelectorAll('.add-item');
     addButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -101,7 +94,6 @@ class Cart {
       });
     });
 
-    // Bind event listeners for the Remove buttons
     const removeButtons = cartItemsContainer.querySelectorAll('.remove-item');
     removeButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -150,29 +142,19 @@ function displayProducts() {
 document.addEventListener('DOMContentLoaded', () => {
   displayProducts();
 
-  // Create and append the Proceed to Buy button
+  // Only append the Proceed to Buy button if it doesn't exist yet
   const cartSection = document.querySelector('.cart');
-  const proceedButton = document.createElement('button');
-  proceedButton.innerText = 'Proceed to Buy';
-  proceedButton.style.marginTop = '20px';
-  proceedButton.addEventListener('click', () => {
-    const userResponse = confirm('Do you wish to proceed?');
-    if (userResponse) {
-      const messageBox = document.createElement('div');
-      messageBox.style.position = 'fixed';
-      messageBox.style.top = '50%';
-      messageBox.style.left = '50%';
-      messageBox.style.transform = 'translate(-50%, -50%)';
-      messageBox.style.backgroundColor = 'white';
-      messageBox.style.padding = '20px';
-      messageBox.style.border = '2px solid #333';
-      messageBox.style.zIndex = '1000';
-      messageBox.innerHTML = `<p>Items successfully bought.</p><p>Please shop with us again in the future.</p>`;
-      document.body.appendChild(messageBox);
-      setTimeout(() => {
-        messageBox.remove();
-      }, 3000);
-    }
-  });
-  cartSection.appendChild(proceedButton);
+  if (!document.querySelector('.proceed-to-buy')) {
+    const proceedButton = document.createElement('button');
+    proceedButton.innerText = 'Proceed to Buy';
+    proceedButton.classList.add('proceed-to-buy');
+    proceedButton.style.marginTop = '20px';
+    proceedButton.addEventListener('click', () => {
+      const userResponse = confirm('Do you wish to proceed?');
+      if (userResponse) {
+        alert("Items successfully bought. Please shop with us again in the future.");
+      }
+    });
+    cartSection.appendChild(proceedButton);
+  }
 });
