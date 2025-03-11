@@ -28,5 +28,19 @@
     <p>Total: $<span id="total-price">0</span></p>
   </section>
   <script src="script1.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartSection = document.querySelector('.cart');
+    if (cartSection) {
+      const proceedButton = document.createElement('button');
+      proceedButton.innerText = 'Proceed to Buy';
+      proceedButton.style.marginTop = '20px';
+      cartSection.appendChild(proceedButton);
+      console.log('Proceed to Buy button appended');
+    } else {
+      console.log('Cart section not found');
+    }
+  });
+</script>
 </body>
 </html>
