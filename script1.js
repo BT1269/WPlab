@@ -142,7 +142,6 @@ function displayProducts() {
 document.addEventListener('DOMContentLoaded', () => {
   displayProducts();
 
-  // Only append the Proceed to Buy button if it doesn't exist yet
   const cartSection = document.querySelector('.cart');
   if (!document.querySelector('.proceed-to-buy')) {
     const proceedButton = document.createElement('button');
