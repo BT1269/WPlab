@@ -149,17 +149,16 @@ document.addEventListener('DOMContentLoaded', () => {
     proceedButton.innerText = 'Proceed to Buy';
     proceedButton.classList.add('proceed-to-buy');
     proceedButton.style.marginTop = '20px';
-    proceedButton.addEventListener('click', () => {
-      const userResponse = confirm('Do you wish to proceed?');
-      if (userResponse) {
-        alert("Items successfully bought. Please shop with us again in the future.");
-        // Reset the page after the alert
-        setTimeout(() => {
-  window.location.reload();
-}, 100);
+   proceedButton.addEventListener('click', () => {
+  const userResponse = confirm('Do you wish to proceed?');
+  if (userResponse) {
+    alert("Items successfully bought. Please shop with us again in the future.");
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  }
+});
 
-      }
-    });
     cartSection.appendChild(proceedButton);
   }
 });
