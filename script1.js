@@ -153,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const userResponse = confirm('Do you wish to proceed?');
       if (userResponse) {
         alert("Items successfully bought. Please shop with us again in the future.");
+        // Reset the page after the alert
+        window.location.reload();
       }
     });
     cartSection.appendChild(proceedButton);
