@@ -154,7 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (userResponse) {
         alert("Items successfully bought. Please shop with us again in the future.");
         // Reset the page after the alert
-        window.location.reload();
+        setTimeout(() => {
+  window.location.reload();
+}, 100);
+
       }
     });
     cartSection.appendChild(proceedButton);
