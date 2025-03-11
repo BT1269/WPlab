@@ -153,11 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const userResponse = confirm('Do you wish to proceed?');
   if (userResponse) {
     alert("Items successfully bought. Please shop with us again in the future.");
-    setTimeout(() => {
-      window.location.reload();
-    }, 100);
+    window.location.href = window.location.href;
   }
 });
+
 
     cartSection.appendChild(proceedButton);
   }
