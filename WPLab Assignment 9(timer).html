@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Countdown Timer with Color Indicator</title>
+  <title>Countdown Timer with Interactive Features</title>
   <link rel="stylesheet" href="timer.css">
 </head>
 <body>
@@ -15,6 +15,47 @@
     <button id="reset-btn">Reset</button>
     <div id="timer-display">0</div>
   </div>
+
+  <div class="list-operations">
+    <h2>List Operations</h2>
+    <input type="text" id="list-input" placeholder="Enter list item">
+    <button id="add-list-item">Add Item</button>
+    <button id="sort-list">Sort Alphabetically</button>
+    <button id="remove-duplicates">Remove Duplicates</button>
+    <button id="reverse-list">Reverse Order</button>
+    <ul id="list-display"></ul>
+  </div>
+
+  <div class="table-container">
+    <h2>User Data Table</h2>
+    <input type="text" id="name-input" placeholder="Enter Name">
+    <input type="number" id="age-input" placeholder="Enter Age">
+    <button id="add-row-btn">Add Row</button>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="image-gallery">
+    <h2>Interactive Image Gallery</h2>
+    <div class="gallery">
+      <img src="image1.jpg" alt="Thumbnail 1" class="thumbnail">
+      <img src="image2.jpg" alt="Thumbnail 2" class="thumbnail">
+      <img src="https://th.bing.com/th/id/OIP.ccz9Jq0Kxrv2UdyyoWA_pAHaHa?w=219&h=219&c=7&r=0&o=5&pid=1.7" alt="Thumbnail 3" class="thumbnail">
+    </div>
+    <div id="modal" class="modal">
+      <span id="close-modal" class="close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Larger View">
+    </div>
+  </div>
+
   <script src="timer.js"></script>
 </body>
 </html>
