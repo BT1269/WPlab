@@ -35,18 +35,17 @@ body {
     transition: background-color 1s ease;
   }
   
-  .green {
-    background-color: green !important;
-  }
-  
-  .yellow {
-    background-color: yellow !important;
-  }
-  
-  .red {
-    background-color: red !important;
-  }
-  
+  body.green {
+  background-color: green !important;
+}
+
+body.yellow {
+  background-color: yellow !important;
+}
+
+body.red {
+  background-color: red !important;
+}
   ul {
     list-style-type: none;
     padding: 0;
