@@ -42,15 +42,16 @@ function resetTimer() {
 
 function updateDisplay() {
   timerDisplay.textContent = timeLeft;
-  timerDisplay.classList.remove('green', 'yellow', 'red');
+  document.body.classList.remove('green', 'yellow', 'red');
   if (timeLeft > 10) {
-    timerDisplay.classList.add('green');
+    document.body.classList.add('green');
   } else if (timeLeft > 5) {
-    timerDisplay.classList.add('yellow');
+    document.body.classList.add('yellow');
   } else if (timeLeft <= 5 && timeLeft > 0) {
-    timerDisplay.classList.add('red');
+    document.body.classList.add('red');
   }
 }
+
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
