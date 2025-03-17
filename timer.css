@@ -6,18 +6,19 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    transition: background-color 1s ease;
   }
  body.green {
   background-color: green !important;
-}
+  }
 
 body.yellow {
   background-color: yellow !important;
-}
+  }
 
 body.red {
   background-color: red !important;
-}
+  }
   
   .timer-container, .list-operations, .table-container, .image-gallery {
     width: 80%;
