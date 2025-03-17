@@ -7,6 +7,17 @@ body {
     align-items: center;
     gap: 30px;
   }
+ body.green {
+  background-color: green !important;
+}
+
+body.yellow {
+  background-color: yellow !important;
+}
+
+body.red {
+  background-color: red !important;
+}
   
   .timer-container, .list-operations, .table-container, .image-gallery {
     width: 80%;
@@ -34,17 +45,7 @@ body {
     transition: background-color 1s ease;
   }
   
-  body.green {
-  background-color: green !important;
-}
-
-body.yellow {
-  background-color: yellow !important;
-}
-
-body.red {
-  background-color: red !important;
-}
+ 
   ul {
     list-style-type: none;
     padding: 0;
