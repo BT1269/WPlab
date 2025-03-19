@@ -1,85 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visa Requirement Checker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            width: 300px;
-            margin: auto;
-            text-align: center;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        select, button {
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%;
-            font-size: 16px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        #message {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visa Requirement Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f0f2f5, #cfd9df);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-weight: 700;
+    }
+    select, button {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.75rem 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    select:focus, button:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0,123,255,0.3);
+    }
+    button {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #message {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #444;
+      min-height: 24px;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Visa Requirement Checker</h2>
+    <select id="countrySelect">
+      <option value="">Select a country</option>
+      <option value="USA">USA</option>
+      <option value="Canada">Canada</option>
+      <option value="India">India</option>
+      <option value="UK">UK</option>
+      <option value="Australia">Australia</option>
+    </select>
+    <button onclick="checkVisaRequirement()">Check Visa</button>
+    <div id="message"></div>
+  </div>
 
-    <div class="container">
-        <h2>Visa Requirement Checker</h2>
-
-        <select id="countrySelect">
-            <option value="">Select a country</option>
-            <option value="USA">USA</option>
-            <option value="Canada">Canada</option>
-            <option value="India">India</option>
-            <option value="UK">UK</option>
-            <option value="Australia">Australia</option>
-        </select>
-
-        <button onclick="checkVisaRequirement()">Check Visa</button>
-
-        <div id="message"></div>
-    </div>
-
-    <script>
-        function checkVisaRequirement() {
-            const country = document.getElementById('countrySelect').value;
-            const messageElement = document.getElementById('message');
-
-            switch(country) {
-                case 'USA':
-                    messageElement.innerText = "Visa required for most applicants.";
-                    break;
-                case 'Canada':
-                    messageElement.innerText = "Visa required unless you have an eTA.";
-                    break;
-                case 'India':
-                    messageElement.innerText = "Visa required before travel.";
-                    break;
-                case 'UK':
-                    messageElement.innerText = "Visa depends on the duration of stay.";
-                    break;
-                case 'Australia':
-                    messageElement.innerText = "eVisa available for eligible travelers.";
-                    break;
-                default:
-                    messageElement.innerText = "Please select a country.";
-                    break;
-            }
-        }
-    </script>
-
+  <script>
+    function checkVisaRequirement() {
+      const country = document.getElementById('countrySelect').value;
+      const messageElement = document.getElementById('message');
+      switch(country) {
+        case 'USA':
+          messageElement.innerText = "Visa required for most applicants.";
+          break;
+        case 'Canada':
+          messageElement.innerText = "Visa required unless you have an eTA.";
+          break;
+        case 'India':
+          messageElement.innerText = "Visa required before travel.";
+          break;
+        case 'UK':
+          messageElement.innerText = "Visa depends on the duration of stay.";
+          break;
+        case 'Australia':
+          messageElement.innerText = "eVisa available for eligible travelers.";
+          break;
+        default:
+          messageElement.innerText = "Please select a country.";
+          break;
+      }
+    }
+  </script>
 </body>
 </html>
