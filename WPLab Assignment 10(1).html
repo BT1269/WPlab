@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Requirement Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #message {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Visa Requirement Checker</h2>
+
+        <select id="countrySelect">
+            <option value="">Select a country</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+        </select>
+
+        <button onclick="checkVisaRequirement()">Check Visa</button>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function checkVisaRequirement() {
+            const country = document.getElementById('countrySelect').value;
+            const messageElement = document.getElementById('message');
+
+            switch(country) {
+                case 'USA':
+                    messageElement.innerText = "Visa required for most applicants.";
+                    break;
+                case 'Canada':
+                    messageElement.innerText = "Visa required unless you have an eTA.";
+                    break;
+                case 'India':
+                    messageElement.innerText = "Visa required before travel.";
+                    break;
+                case 'UK':
+                    messageElement.innerText = "Visa depends on the duration of stay.";
+                    break;
+                case 'Australia':
+                    messageElement.innerText = "eVisa available for eligible travelers.";
+                    break;
+                default:
+                    messageElement.innerText = "Please select a country.";
+                    break;
+            }
+        }
+    </script>
+
+</body>
+</html>
