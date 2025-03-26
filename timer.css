@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    transition: background-color 10s ease-in-out;
+    transition: background-color 1s ease-in-out;
   }
  body.green {
   background-color: green !important;
