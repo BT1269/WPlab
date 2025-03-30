@@ -21,7 +21,7 @@
     <div class="date" id="date"></div>
     <div class="controls">
       <h2>Set Alarm</h2>
-      <input type="time" id="alarmTime">
+      <input type="time" id="alarmTime" onkeypress="handleKeyPress(event)">
       <button onclick="setAlarm()">Set Alarm</button>
       <ul id="alarmsList"></ul>
     </div>
@@ -45,6 +45,11 @@
         alarmList.appendChild(li);
       }
     }
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        setAlarm();
+      }
+    }
     setInterval(() => {
       let now = new Date();
       let currentTimeHM = now.toLocaleTimeString('en-US', { hour12: false }).slice(0, 5);
@@ -53,15 +58,21 @@
         container.classList.add('shake');
         alarmSound.loop = true;
         alarmSound.play();
-        let stopAlarm = false;
-        while (!stopAlarm) {
-          alert('Alarm ringing!');
-          stopAlarm = true;
+        let snooze = confirm('Alarm ringing! Press OK to stop or Cancel to snooze for 5 minutes.');
+        if (snooze) {
+          alarmSound.pause();
+          alarmSound.currentTime = 0;
+          container.classList.remove('shake');
+          alarms = alarms.filter(time => time !== currentTimeHM);
+        } else {
+          let snoozeTime = new Date();
+          snoozeTime.setMinutes(snoozeTime.getMinutes() + 5);
+          let snoozeHM = snoozeTime.toLocaleTimeString('en-US', { hour12: false }).slice(0, 5);
+          alarms.push(snoozeHM);
+          alarmSound.pause();
+          alarmSound.currentTime = 0;
+          container.classList.remove('shake');
         }
-        alarmSound.pause();
-        alarmSound.currentTime = 0;
-        container.classList.remove('shake');
-        alarms = alarms.filter(time => time !== currentTimeHM);
       }
     }, 1000);
   </script>
