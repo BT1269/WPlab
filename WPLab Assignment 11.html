@@ -3,144 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enhanced Digital Clock</title>
+  <title>Digital Clock with Alarm & Features</title>
   <style>
-    /* ... (keep existing styles) ... */
-    .alarm-active {
-      animation: shake 0.5s infinite;
+    /* Previous CSS remains unchanged */
+    
+    /* Modified alarm alert positioning */
+    #alarmAlert {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      padding: 10px 20px;
+      border-radius: 10px;
       border: 2px solid red;
-    }
-    .snooze-btn {
-      background: #4CAF50;
-      margin: 5px;
-      padding: 5px 10px;
-    }
-    .timer-input {
-      width: 60px;
-      margin: 5px;
+      z-index: 999;
+      width: max-content;
     }
   </style>
 </head>
 <body>
-  <!-- Add audio element for alarm sound -->
-  <audio id="alarmSound" src="https://assets.mixkit.co/active_storage/sfx/2575/2575-preview.mp3"></audio>
+  <!-- Previous HTML remains unchanged -->
 
   <div class="container" id="container">
-    <!-- ... (keep existing elements) ... -->
-    
-    <div class="controls">
-      <h2>Set Alarm</h2>
-      <input type="time" id="alarmTime" onkeypress="handleEnter(event)">
-      <button onclick="setAlarm()">Set Alarm</button>
-      <ul id="alarmsList"></ul>
-    </div>
+    <!-- ... other elements ... -->
 
-    <div class="timer">
-      <h2>Countdown Timer</h2>
-      <input type="text" id="minutesInput" class="timer-input" placeholder="Min">:
-      <input type="text" id="secondsInput" class="timer-input" placeholder="Sec">
-      <button onclick="startTimer()">Start</button>
-    </div>
-
-    <!-- Alarm alert box -->
-    <div id="alarmAlert" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: black; padding: 20px; border-radius: 10px;">
-      <h2>ALARM!</h2>
+    <!-- Modified alarm alert position -->
+    <div id="alarmAlert">
+      <h2 style="margin: 0 0 10px 0; font-size: 1.2em;">ALARM!</h2>
       <button onclick="stopAlarm()">Stop</button>
-      <button class="snooze-btn" onclick="snoozeAlarm()">Snooze (5m)</button>
+      <button onclick="snoozeAlarm()" style="margin-left: 10px;">Snooze (5m)</button>
     </div>
   </div>
 
   <script>
-    // ... (keep existing clock update code) ...
-
-    // Alarm functions
-    function handleEnter(e) {
-      if (e.keyCode === 13) setAlarm();
-    }
-
-    function setAlarm() {
-      const alarmTime = document.getElementById('alarmTime').value;
-      if (alarmTime) {
-        alarms.push(alarmTime);
-        const li = document.createElement('li');
-        li.innerHTML = `
-          ${alarmTime}
-          <button onclick="this.parentElement.remove(); alarms = alarms.filter(t => t !== '${alarmTime}')">×</button>
-        `;
-        document.getElementById('alarmsList').appendChild(li);
-      }
-    }
-
-    function checkAlarms() {
-      const now = new Date();
-      const currentTimeHM = now.toLocaleTimeString('en-US', { hour12: false }).slice(0, 5);
-      
-      if (alarms.includes(currentTimeHM)) {
-        triggerAlarm();
-        alarms = alarms.filter(time => time !== currentTimeHM);
-      }
-    }
-    setInterval(checkAlarms, 1000);
+    // Previous JavaScript remains unchanged
 
     function triggerAlarm() {
-      const container = document.getElementById('container');
+      document.getElementById('container').classList.add('shake');
       const alarmAlert = document.getElementById('alarmAlert');
-      const alarmSound = document.getElementById('alarmSound');
-      
-      container.classList.add('alarm-active');
       alarmAlert.style.display = 'block';
-      alarmSound.loop = true;
-      alarmSound.play();
+      alarmAlert.style.top = '20px'; // Ensure top position
+      document.getElementById('alarmSound').loop = true;
+      document.getElementById('alarmSound').play();
     }
-
-    function stopAlarm() {
-      const container = document.getElementById('container');
-      const alarmAlert = document.getElementById('alarmAlert');
-      const alarmSound = document.getElementById('alarmSound');
-      
-      container.classList.remove('alarm-active');
-      alarmAlert.style.display = 'none';
-      alarmSound.pause();
-      alarmSound.currentTime = 0;
-    }
-
-    function snoozeAlarm() {
-      stopAlarm();
-      const now = new Date();
-      now.setMinutes(now.getMinutes() + 5);
-      const snoozeTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-      alarms.push(snoozeTime);
-      alert(`Alarm snoozed to ${snoozeTime}`);
-    }
-
-    // Enhanced Timer functions
-    function startTimer() {
-      const minutes = parseInt(document.getElementById('minutesInput').value) || 0;
-      const seconds = parseInt(document.getElementById('secondsInput').value) || 0;
-      const initialTime = minutes * 60 + seconds;
-      
-      if (initialTime <= 0) {
-        alert('Please enter valid time');
-        return;
-      }
-
-      let timeLeft = initialTime;
-      setProgress(100);
-
-      clearInterval(timerInterval);
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        setProgress((timeLeft / initialTime) * 100);
-        
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          alert("Time's up!");
-          setProgress(0);
-        }
-      }, 1000);
-    }
-
-    // ... (keep existing progress ring code) ...
   </script>
 </body>
 </html>
