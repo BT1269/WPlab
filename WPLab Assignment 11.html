@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Clock with Alarm & Features</title>
   <style>
-    /* Your original CSS preserved */
+    /* Original preserved CSS */
     body { 
       font-family: Arial, sans-serif; 
       text-align: center; 
@@ -55,8 +55,7 @@
       100% { transform: translate(5px, 5px); }
     }
     .shake {
-      animation: shake 0.5s;
-      animation-iteration-count: infinite;
+      animation: shake 0.5s infinite;
     }
     .progress-ring {
       position: absolute;
@@ -74,17 +73,19 @@
       transition: stroke-dashoffset 50ms linear;
     }
 
-    /* Added styles for new features */
+    /* Alarm alert styling */
     #alarmAlert {
       display: none;
       position: absolute;
-      top: 50%;
+      top: 20px;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.9);
-      padding: 20px;
+      padding: 10px 20px;
       border-radius: 10px;
       border: 2px solid red;
+      z-index: 999;
+      width: max-content;
     }
     .timer-input {
       width: 50px;
@@ -93,7 +94,11 @@
   </style>
 </head>
 <body>
-  <audio id="alarmSound" src="https://assets.mixkit.co/active_storage/sfx/2575/2575-preview.mp3"></audio>
+  <!-- Audio element with fallback -->
+  <audio id="alarmSound">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2575/2575-preview.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <div class="container" id="container">
     <svg class="progress-ring" id="progressRing" width="300" height="300" viewBox="0 0 100 100">
@@ -134,74 +139,99 @@
     </div>
 
     <div id="alarmAlert">
-      <h2 style="margin: 0 0 10px 0;">ALARM!</h2>
+      <h2 style="margin: 0 0 10px 0; font-size: 1.2em;">ALARM!</h2>
       <button onclick="stopAlarm()">Stop</button>
       <button onclick="snoozeAlarm()" style="margin-left: 10px;">Snooze (5m)</button>
     </div>
   </div>
 
   <script>
-    // Original clock and alarm code
+    // Clock Update
     function updateClock() {
-      let now = new Date();
-      document.getElementById('clock').innerText = now.toLocaleTimeString();
-      document.getElementById('date').innerText = now.toDateString();
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString();
+      document.getElementById('date').textContent = now.toDateString();
     }
     setInterval(updateClock, 1000);
 
+    // Alarm System
     let alarms = [];
+    
     function handleEnter(e) {
       if (e.key === 'Enter') setAlarm();
     }
 
     function setAlarm() {
-      let alarmTime = document.getElementById('alarmTime').value;
-      if (alarmTime) {
-        alarms.push(alarmTime);
-        let alarmList = document.getElementById('alarmsList');
-        let li = document.createElement('li');
-        li.innerHTML = `
-          ${alarmTime}
-          <button onclick="this.parentElement.remove(); alarms = alarms.filter(t => t !== '${alarmTime}')">×</button>
-        `;
-        alarmList.appendChild(li);
-      }
+      const alarmTime = document.getElementById('alarmTime').value;
+      if (!alarmTime) return;
+
+      alarms.push(alarmTime);
+      const li = document.createElement('li');
+      li.innerHTML = `
+        ${alarmTime}
+        <button onclick="this.parentElement.remove(); alarms = alarms.filter(t => t !== '${alarmTime}')">×</button>
+      `;
+      document.getElementById('alarmsList').appendChild(li);
     }
 
     function checkAlarms() {
-      let now = new Date();
-      let currentTimeHM = now.toLocaleTimeString('en-US', { hour12: false }).slice(0, 5);
-      if (alarms.includes(currentTimeHM)) {
+      const now = new Date();
+      const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+      
+      if (alarms.includes(currentTime)) {
         triggerAlarm();
-        alarms = alarms.filter(time => time !== currentTimeHM);
+        alarms = alarms.filter(time => time !== currentTime);
       }
     }
     setInterval(checkAlarms, 1000);
 
     function triggerAlarm() {
-      document.getElementById('container').classList.add('shake');
-      document.getElementById('alarmAlert').style.display = 'block';
-      document.getElementById('alarmSound').loop = true;
-      document.getElementById('alarmSound').play();
+      const container = document.getElementById('container');
+      const alarmAlert = document.getElementById('alarmAlert');
+      const alarmSound = document.getElementById('alarmSound');
+      
+      container.classList.add('shake');
+      alarmAlert.style.display = 'block';
+      alarmSound.loop = true;
+      alarmSound.play().catch(error => {
+        console.log('Audio playback failed:', error);
+        alert('Alarm! Wake up!');
+      });
     }
 
     function stopAlarm() {
-      document.getElementById('container').classList.remove('shake');
-      document.getElementById('alarmAlert').style.display = 'none';
-      document.getElementById('alarmSound').pause();
-      document.getElementById('alarmSound').currentTime = 0;
+      const container = document.getElementById('container');
+      const alarmAlert = document.getElementById('alarmAlert');
+      const alarmSound = document.getElementById('alarmSound');
+      
+      container.classList.remove('shake');
+      alarmAlert.style.display = 'none';
+      alarmSound.pause();
+      alarmSound.currentTime = 0;
     }
 
     function snoozeAlarm() {
       stopAlarm();
-      let now = new Date();
+      const now = new Date();
       now.setMinutes(now.getMinutes() + 5);
       const snoozeTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
       alarms.push(snoozeTime);
       alert(`Alarm snoozed to ${snoozeTime}`);
     }
 
-    // Timer enhancements
+    // Timer System
+    let timerInterval;
+    const progressCircle = document.getElementById('progressCircle');
+    const radius = progressCircle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+    progressCircle.style.strokeDasharray = circumference;
+    progressCircle.style.strokeDashoffset = circumference;
+
+    function setProgress(percent) {
+      const offset = circumference - (percent / 100) * circumference;
+      progressCircle.style.strokeDashoffset = offset;
+    }
+
     function startTimer() {
       const minutes = parseInt(document.getElementById('minutesInput').value) || 0;
       const seconds = parseInt(document.getElementById('secondsInput').value) || 0;
@@ -228,72 +258,60 @@
       }, 1000);
     }
 
-    // Keep existing progress ring code
-    let timerInterval;
-    const progressCircle = document.getElementById('progressCircle');
-    const radius = progressCircle.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
-    progressCircle.style.strokeDasharray = circumference;
-    progressCircle.style.strokeDashoffset = circumference;
-
-    function setProgress(percent) {
-      const offset = circumference - (percent / 100) * circumference;
-      progressCircle.style.strokeDashoffset = offset;
-    }
-
-    // Keep existing stopwatch and theme code
+    // Stopwatch System
     let stopwatchInterval;
     let stopwatchTime = 0;
     let isStopwatchRunning = false;
+    
     function startStopwatch() {
       if (isStopwatchRunning) return;
       isStopwatchRunning = true;
       stopwatchInterval = setInterval(() => {
         stopwatchTime++;
-        document.getElementById('stopwatch').innerText = new Date(stopwatchTime * 1000).toISOString().substr(11, 8);
+        document.getElementById('stopwatch').textContent = 
+          new Date(stopwatchTime * 1000).toISOString().substr(11, 8);
       }, 1000);
     }
+
     function pauseStopwatch() {
       clearInterval(stopwatchInterval);
       isStopwatchRunning = false;
     }
+
     function resetStopwatch() {
       clearInterval(stopwatchInterval);
       isStopwatchRunning = false;
       stopwatchTime = 0;
-      document.getElementById('stopwatch').innerText = '00:00:00';
+      document.getElementById('stopwatch').textContent = '00:00:00';
     }
 
+    // Theme System
     function changeTheme(theme) {
-      let container = document.getElementById('container');
-      if (theme === 'light') {
-        document.body.style.background = '#fff';
-        document.body.style.color = '#000';
-        container.style.background = 'rgba(255, 255, 255, 0.9)';
-        container.style.color = '#000';
-        container.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.5)';
-      }
-      if (theme === 'dark') {
-        document.body.style.background = '#222';
-        document.body.style.color = 'white';
-        container.style.background = 'rgba(0, 0, 0, 0.8)';
-        container.style.color = 'white';
-        container.style.boxShadow = '0px 0px 10px rgba(255, 255, 255, 0.3)';
-      }
-      if (theme === 'neon') {
-        document.body.style.background = '#000';
-        document.body.style.color = '#0ff';
-        container.style.background = 'rgba(0, 0, 0, 0.9)';
-        container.style.color = '#0ff';
-        container.style.boxShadow = '0px 0px 20px cyan';
-        document.querySelectorAll('.clock, .date, .themes h2, .controls h2, .stopwatch h2, .timer h2').forEach(el => {
-          el.style.animation = 'neonGlow 1.5s infinite alternate';
-        });
-      } else {
-        document.querySelectorAll('.clock, .date, .themes h2, .controls h2, .stopwatch h2, .timer h2').forEach(el => {
-          el.style.animation = 'none';
-        });
-      }
+      const container = document.getElementById('container');
+      const elements = document.querySelectorAll('.clock, .date, .themes h2, .controls h2, .stopwatch h2, .timer h2');
+      
+      document.body.style.background = 
+        theme === 'light' ? '#fff' : 
+        theme === 'dark' ? '#222' : '#000';
+      
+      document.body.style.color = theme === 'neon' ? '#0ff' : 
+                               theme === 'light' ? '#000' : 'white';
+      
+      container.style.background = 
+        theme === 'light' ? 'rgba(255, 255, 255, 0.9)' : 
+        'rgba(0, 0, 0, ' + (theme === 'neon' ? '0.9)' : '0.8)');
+      
+      container.style.color = theme === 'neon' ? '#0ff' : 
+                            theme === 'light' ? '#000' : 'white';
+      
+      container.style.boxShadow = 
+        theme === 'neon' ? '0px 0px 20px cyan' : 
+        theme === 'light' ? '0px 0px 15px rgba(0, 0, 0, 0.5)' : 
+        '0px 0px 10px rgba(255, 255, 255, 0.3)';
+
+      elements.forEach(el => {
+        el.style.animation = theme === 'neon' ? 'neonGlow 1.5s infinite alternate' : 'none';
+      });
     }
   </script>
 </body>
